@@ -40,8 +40,8 @@ jobs:
         run: |
           mkdir combined-build
           cp -r documentation/build/* combined-build/
-          mkdir -p combined-build/extensions
-          cp -r extensions-site/build/client/* combined-build/extensions/
+          mkdir -p combined-build/v1/extensions
+          cp -r extensions-site/build/client/* combined-build/v1/extensions/
 
       - name: Deploy to /goose
         uses: peaceiris/actions-gh-pages@v3
