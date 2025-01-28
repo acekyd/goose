@@ -65,12 +65,15 @@ const config: Config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
-        redirects: [
-          {
-            from: "/v1/*", // Match all paths under /goose/v1
-            to: "/", // Redirect to the equivalent path under /goose
-          },
-        ],
+        createRedirects(existingPath) {
+          if (existingPath.includes('/v1')) {
+            // Replace '/v1' with '' to remove it from the path
+            return [
+              existingPath.replace('/v1', ''),
+            ];
+          }
+          return undefined; // No redirect created for paths that don't include '/v1'
+        },
       },
     ],
   ],
