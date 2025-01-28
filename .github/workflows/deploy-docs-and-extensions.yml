@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies and build extensions-site
         working-directory: ./extensions-site
         env:
-          VITE_BASENAME: "/goose/extensions/" # Set the base URL here for the extensions site
+          VITE_BASENAME: "/goose/v1/extensions/" # Set the base URL here for the extensions site
         run: |
           npm install
           npm run build
