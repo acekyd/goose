@@ -77,15 +77,7 @@ const config: Config = {
           {
             to: '/',
             from: '/v1/',
-          },
-          {
-            from: '/v1/extensions', // Redirect root path of extensions
-            to: '/v1/extensions/index.html', // Redirect to the React app entry
-          },
-          {
-            from: '/v1/extensions/details/:slug', // Redirect subpaths
-            to: '/v1/extensions/index.html', // Ensure React app handles deep links
-          },
+          }
         ],
       },
     ],
