@@ -74,6 +74,10 @@ const config: Config = {
             to: '/docs/getting-started/installation',
             from: '/v1/docs/getting-started/installation',
           },
+          {
+            to: '/',
+            from: '/v1/',
+          }
         ],
       },
     ],
