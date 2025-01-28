@@ -65,15 +65,16 @@ const config: Config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
-        createRedirects(existingPath) {
-          if (existingPath.includes('/v1')) {
-            // Replace '/v1' with '' to remove it from the path
-            return [
-              existingPath.replace('/v1', ''),
-            ];
-          }
-          return undefined; // No redirect created for paths that don't include '/v1'
-        },
+        redirects: [
+          {
+            to: '/docs/getting-started/providers',
+            from: '/v1/docs/getting-started/providers',
+          },
+          {
+            to: '/docs/getting-started/installation',
+            from: '/v1/docs/getting-started/installation',
+          },
+        ],
       },
     ],
   ],
