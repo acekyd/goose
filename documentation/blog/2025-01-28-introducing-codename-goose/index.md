@@ -60,4 +60,4 @@ Excited for upcoming features and events? Be sure to connect with us!
 - [BlueSky](https://bsky.app/profile/block-opensource.bsky.social)
 
 
-[extensions-directory]: https://block.github.io/goose/v1/extensions
+[extensions-directory]: https://block.github.io/goose/extensions

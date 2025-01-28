@@ -269,4 +269,4 @@ goose session --with-extension "VAR=value command arg1 arg2"
 Goose extensions are implemented with MCP, a standard protocol that allows AI models and agents to securely connect with local or remote resources. Learn how to build your own [extension as an MCP server](https://modelcontextprotocol.io/quickstart/server).
 
 
-[extensions-directory]: https://block.github.io/goose/v1/extensions
+[extensions-directory]: https://block.github.io/goose/extensions

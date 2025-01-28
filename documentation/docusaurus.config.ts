@@ -20,19 +20,15 @@ const config: Config = {
   url: "https://block.github.io/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/goose/v1/",
+  baseUrl: "/goose/",
 
   // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
   organizationName: "block", // Usually your GitHub org/user name.
   projectName: "goose", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
@@ -51,7 +47,6 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
@@ -64,8 +59,23 @@ const config: Config = {
   ],
 
   themes: ["@inkeep/docusaurus/chatButton", "@inkeep/docusaurus/searchBar"],
+
+  // Updated redirects plugin with wildcard
+  plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            from: "/goose/v1/*", // Match all paths under /goose/v1
+            to: "/goose/", // Redirect to the equivalent path under /goose
+          },
+        ],
+      },
+    ],
+  ],
+
   themeConfig: {
-    // Replace with your project's social card
     image: "img/home-banner.png",
     navbar: {
       title: "",
@@ -87,7 +97,7 @@ const config: Config = {
         },
         { to: "/blog", label: "Blog", position: "left" },
         {
-          to: "https://block.github.io/goose/v1/extensions/",
+          to: "https://block.github.io/goose/extensions/",
           label: "Extensions",
           position: "left",
         },
@@ -114,7 +124,7 @@ const config: Config = {
             },
             {
               label: "Extensions",
-              to: "https://block.github.io/goose/v1/extensions/",
+              to: "https://block.github.io/goose/extensions/",
             },
           ],
         },

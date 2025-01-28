@@ -126,7 +126,7 @@ While you're able to manually navigate to your working directory and open the HT
         ```sh
         goose configure
         ```
-        3. Choose `Add extension` > `Built-in Extension` > `Computer Controller`. This [extension](https://block.github.io/goose/v1/extensions/detail/nondeveloper) enables webscraping, file caching, and automations.
+        3. Choose `Add extension` > `Built-in Extension` > `Computer Controller`. This [extension](https://block.github.io/goose/extensions/detail/nondeveloper) enables webscraping, file caching, and automations.
         ```
         ┌   goose-configure 
         │
