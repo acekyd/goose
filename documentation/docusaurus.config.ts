@@ -67,8 +67,8 @@ const config: Config = {
       {
         redirects: [
           {
-            from: "/goose/v1/*", // Match all paths under /goose/v1
-            to: "/goose/", // Redirect to the equivalent path under /goose
+            from: "/v1/*", // Match all paths under /goose/v1
+            to: "/", // Redirect to the equivalent path under /goose
           },
         ],
       },
