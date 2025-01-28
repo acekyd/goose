@@ -18,6 +18,19 @@ jobs:
         with:
           node-version: 20 
 
+      - name: Install dependencies and build extensions-site
+        working-directory: ./extensions-site
+        env:
+          VITE_BASENAME: "/goose/v1/extensions/" # Set the base URL here for the extensions site
+        run: |
+          npm install
+          npm run build
+
+      - name: Copy extensions-site build to Docusaurus static folder
+        run: |
+          mkdir -p documentation/static/v1/extensions
+          cp -r extensions-site/build/client/* documentation/static/v1/extensions/
+
       - name: Install dependencies and build docs
         working-directory: ./documentation
         env:
@@ -28,25 +41,9 @@ jobs:
           npm install
           npm run build
 
-      - name: Install dependencies and build extensions-site
-        working-directory: ./extensions-site
-        env:
-          VITE_BASENAME: "/goose/v1/extensions/" # Set the base URL here for the extensions site
-        run: |
-          npm install
-          npm run build
-
-      - name: Combine builds into one directory
-        run: |
-          mkdir combined-build
-          cp -r documentation/build/* combined-build/
-          mkdir -p combined-build/v1/extensions
-          cp -r extensions-site/build/client/* combined-build/v1/extensions/
-
       - name: Deploy to /goose
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: combined-build
+          publish_dir: documentation/build
           destination_dir: . # Deploy the site to the root /goose directory
-      
