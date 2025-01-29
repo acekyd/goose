@@ -7,7 +7,7 @@ export default function NotFound() {
   useEffect(() => {
     // If the user is in the React app path, redirect to its index.html
     if (location.pathname.startsWith('/goose/v1/extensions')) {
-      window.location.href = '/goose/v1/extensions/index.html';
+      window.location.href = '/goose/v1/extensions/';
     }
   }, [location]);
 
