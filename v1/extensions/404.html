@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="refresh" content="0; url=./index.html">
-</head>
-<body></body>
+<html lang="en">
+  <head>
+    <script>
+      // Redirect preserving the full path
+      var currentPath = window.location.pathname + window.location.search + window.location.hash;
+      var reactAppBasePath = "/goose/v1/extensions/";
+      window.location.href = reactAppBasePath + "?redirect=" + encodeURIComponent(currentPath);
+    </script>
+  </head>
+  <body></body>
 </html>
