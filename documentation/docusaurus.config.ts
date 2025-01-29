@@ -57,6 +57,9 @@ const config: Config = {
         theme: {
           customCss: "./src/css/custom.css",
         },
+        pages: {
+          exclude: ['/v1/extensions/detail/**']
+        }
       } satisfies Preset.Options,
     ],
   ],
