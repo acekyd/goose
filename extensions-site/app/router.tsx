@@ -1,8 +1,8 @@
-import { createHashRouter } from "react-router";
+import { createBrowserRouter } from "react-router";
 import HomePage from "./routes/home";
 import DetailPage from "./routes/detail";
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,

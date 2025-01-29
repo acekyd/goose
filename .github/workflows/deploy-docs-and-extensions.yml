@@ -30,9 +30,7 @@ jobs:
         run: |
           mkdir -p documentation/static/v1/extensions
           cp -r extensions-site/build/client/* documentation/static/v1/extensions/
-          # Copy index.html to 404.html for GitHub Pages fallback
-          cp documentation/static/v1/extensions/index.html documentation/static/v1/extensions/404.html
-
+          
       - name: Install dependencies and build docs
         working-directory: ./documentation
         env:
