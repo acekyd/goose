@@ -1,9 +1,13 @@
-name: Deploy Docs & Extensions # (/documentation /goose and /goose/v1)
+name: Deploy Docs & Extensions # (/documentation and /extensions-site)
 
 on:
   push:
     branches:
       - main
+  
+  pull_request:
+    paths:
+      - 'documentation/**'
 
 jobs:
   deploy:
@@ -18,19 +22,6 @@ jobs:
         with:
           node-version: 20 
 
-      - name: Install dependencies and build extensions-site
-        working-directory: ./extensions-site
-        env:
-          VITE_BASENAME: "/goose/v1/extensions/" # Set the base URL here for the extensions site
-        run: |
-          npm install
-          npm run build
-
-      - name: Copy extensions-site build to Docusaurus static folder
-        run: |
-          mkdir -p documentation/static/v1/extensions
-          cp -r extensions-site/build/client/* documentation/static/v1/extensions/
-          
       - name: Install dependencies and build docs
         working-directory: ./documentation
         env:
@@ -41,9 +32,25 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy to /goose
+      - name: Install dependencies and build extensions-site
+        working-directory: ./extensions-site
+        env:
+          VITE_BASENAME: "/goose/v1/extensions/" # Set the base URL here for the extensions site
+        run: |
+          npm install
+          npm run build
+
+      - name: Combine builds into one directory
+        run: |
+          mkdir combined-build
+          cp -r documentation/build/* combined-build/
+          mkdir -p combined-build/v1/extensions
+          cp -r extensions-site/build/client/* combined-build/v1/extensions/
+
+      - name: Deploy to /gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: documentation/build
+          publish_dir: combined-build
           destination_dir: . # Deploy the site to the root /goose directory
+      

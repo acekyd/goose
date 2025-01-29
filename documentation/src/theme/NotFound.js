@@ -1,20 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLocation } from '@docusaurus/router';
 
 export default function NotFound() {
   const location = useLocation();
 
-  useEffect(() => {
-    // If the user is in the React app path, redirect to its index.html
-    if (location.pathname.startsWith('/goose/v1/extensions')) {
-      window.location.href = '/goose/v1/extensions/';
-    }
-  }, [location]);
+  // Ignore 404 handling when inside `/v1/extensions/`
+  if (location.pathname.startsWith('/goose/v1/extensions')) {
+    return null; // Don't show anything, let GitHub Pages serve the React app
+  }
 
   return (
     <main>
       <h1>404 - Page Not Found</h1>
-      <p>Oops! This page doesn’t exist.</p>
+      <p>Oops! The page you are looking for doesn’t exist.</p>
     </main>
   );
 }
